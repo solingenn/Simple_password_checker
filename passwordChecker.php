@@ -29,7 +29,3 @@ function passwordChecker($pass)
 	} 
 	return 'Password is strong!';
 }
-
-$pass = 's1ads75dsfaAA5g';
-
-echo StrongPassword($pass);
