@@ -3,7 +3,7 @@
 function passwordChecker($pass)
 {
 	// searching for integer in $pass string
-	$match = preg_match('/\\d/', $pass, $matches);
+	$match = preg_match('/\d/', $pass, $matches);
 
 	// checking if $match returned true (int is found), if not true error would 
 	// occur because $mathces array would be undefined
@@ -19,13 +19,16 @@ function passwordChecker($pass)
 	} elseif(!preg_match('/[A-Z]/', $pass))
 	{
 		return 'Password must contain at least one uppercase letter!';
-	} elseif(!preg_match('/\\d/', $pass))
+	} elseif(!preg_match('/\d/', $pass))
 	{
 		return 'Password must contain at least one number!';
-	} elseif($intPosition < 3 || $intPosition > (strlen($pass) - 4)) // Checking position of the 1st number occurence
+	} elseif(!preg_match('/[^\da-zA-Z]/', $pass))
+	{
+		return 'Password must containg at least one special character (/*|\${}[] etc.)!';
+	}elseif($intPosition < 3 || $intPosition > (strlen($pass) - 4)) // Checking position of the 1st integer occurence
 	{
 		return 'Position of the 1st number must be after third character from the beginning or third '.
 		       'character from the end of the password!';
 	} 
-	return 'Password is strong!';
+	return 'Password is valid!';
 }
