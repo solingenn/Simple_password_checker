@@ -5,8 +5,8 @@ function passwordChecker($pass)
 	// searching for integer in $pass string
 	$match = preg_match('/\d/', $pass, $matches);
 
-	// checking if $match returned true (int is found), if not true error would 
-	// occur because $mathces array would be undefined
+	// checking if $match returned true (int is found)
+	// if not true; error will occur because $mathces array would be undefined
 	if($match)
 	{
 		// searching for integers position in $pass string
